@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRelv;
     private MainAdapter mAdapter;
-    private List<String> mDatas=new ArrayList<>();
+    private List<News> mDatas=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
         mRelv.setLayoutManager(manager);
         mRelv.setAdapter(mAdapter=new MainAdapter(this,mDatas));
         for (int i = 0; i < 20; i++) {
-            mDatas.add("这是我的第"+i+"条数据");
+            if (i==5){
+                mDatas.add(new News(1,"这是我的第"+i+"条数据"));
+            }else {
+                mDatas.add(new News(0,"这是我的第"+i+"条数据"));
+            }
         }
 
         mAdapter.setOnItemClickListener(new MainAdapter.OnItemClickListener() {

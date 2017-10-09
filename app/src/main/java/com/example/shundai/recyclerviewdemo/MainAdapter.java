@@ -28,12 +28,12 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private Context mContext;
-    private List<String> mDatas;
+    private List<News> mDatas;
     private OnItemClickListener onItemClickListener;
     private final LayoutInflater inflater;
     private OnItemLongClickListener onItemLongClickListener;
 
-    public MainAdapter(Context context, List<String> datas) {
+    public MainAdapter(Context context, List<News> datas) {
         mContext = context;
         mDatas = datas;
         inflater = LayoutInflater.from(context);
@@ -47,11 +47,11 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.mContext = mContext;
     }
 
-    public List<String> getmDatas() {
+    public List<News> getmDatas() {
         return mDatas;
     }
 
-    public void setmDatas(List<String> mDatas) {
+    public void setmDatas(List<News> mDatas) {
         this.mDatas = mDatas;
     }
 
@@ -102,9 +102,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else if (holder instanceof MyViewHolder) {
             if (position>3&&position<mDatas.size()+1){
                 position=position-1;
-                ((MyViewHolder) holder).tv.setText(mDatas.get(position));
+                ((MyViewHolder) holder).tv.setText(mDatas.get(position).getContent());
             }else {
-                ((MyViewHolder) holder).tv.setText(mDatas.get(position));
+                ((MyViewHolder) holder).tv.setText(mDatas.get(position).getContent());
             }
         } else if (holder instanceof MyImageViewHolder) {
             ((MyImageViewHolder) holder).iv.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.tongliya));

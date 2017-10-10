@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mRelv.setAdapter(mAdapter=new MainAdapter(this,mDatas));
         for (int i = 0; i < 20; i++) {
             if (i==5){
-                mDatas.add(new News(1,"这是我的第"+i+"条数据"));
+                mDatas.add(new News(1,"这是图片"));
             }else {
                 mDatas.add(new News(0,"这是我的第"+i+"条数据"));
             }

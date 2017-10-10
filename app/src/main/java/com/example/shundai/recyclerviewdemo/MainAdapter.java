@@ -100,12 +100,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (holder instanceof MyProgressViewholder) {
             ((MyProgressViewholder) holder).tv1.setText("正在加载中...");
         } else if (holder instanceof MyViewHolder) {
-            if (position>3&&position<mDatas.size()+1){
-                position=position-1;
                 ((MyViewHolder) holder).tv.setText(mDatas.get(position).getContent());
-            }else {
-                ((MyViewHolder) holder).tv.setText(mDatas.get(position).getContent());
-            }
         } else if (holder instanceof MyImageViewHolder) {
             ((MyImageViewHolder) holder).iv.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.tongliya));
         }
@@ -115,7 +110,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mDatas.size()+2;
+        return mDatas.size()+1;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -148,13 +143,16 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == mDatas.size() +1) {
+        if (position == mDatas.size() ) {
             return ITEM_TYPE_PROGRESS;
-        } else if (position == 4) {
+        } else if (mDatas.get(position).getType()==1) {
             return ITEM_TYPE_IMAGE;
-        } else {
+        } else if (mDatas.get(position).getType()==0){
             return ITEM_TYPE_STRING;
+        }else {
+            return super.getItemViewType(position);
         }
+
     }
 
     static class MyProgressViewholder extends RecyclerView.ViewHolder {
